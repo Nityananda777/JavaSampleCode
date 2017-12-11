@@ -1,11 +1,11 @@
 package com.serialize;
 
 public  class Customer {
-	Customer(String s)
-	{
-	super();
-	System.out.println("hello");
-	}
+//	Customer(String s)
+//	{
+//	super();
+//	System.out.println("hello");
+//	}
 	private int custId;
 	private String cusname;
 	private String chome;

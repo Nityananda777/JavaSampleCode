@@ -13,7 +13,7 @@ public class Test2{
 		ObjectInputStream o = new ObjectInputStream(f);
 		Employee e =(Employee)o.readObject();
 		//Customer c =(Customer)o.readObject();
-		System.out.println(e.getName());
+		System.out.println(e.getNames());
 		System.out.println(e.getCusname());
 		
 	}

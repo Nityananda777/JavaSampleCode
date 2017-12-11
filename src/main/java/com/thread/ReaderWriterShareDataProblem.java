@@ -1,7 +1,7 @@
 package com.thread;
 
 public class ReaderWriterShareDataProblem {
-	volatile static int c;
+	static int c;
 
 	public static void main(String[] args) {
 

@@ -8,11 +8,11 @@ public class Test1{
 
 	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
-		Employee e = new Employee("hh");
+		Employee e = new Employee();
 		e.setAddress("mumbai");
 		e.setId(101);
-		e.setName("raja");
-		Customer c=new Customer("jj");
+		e.setNames("raja");
+		Customer c=new Customer();
 		c.setChome("mumbai");
 		c.setCusname("ram");
 		c.setCustId(1012);

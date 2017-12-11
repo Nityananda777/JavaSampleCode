@@ -4,10 +4,10 @@ import java.io.Serializable;
 
 public class Employee extends Customer implements Serializable
 {
-	Employee(String s) {
-		super(s);
-		// TODO Auto-generated constructor stub
-	}
+//	Employee(String s) {
+//		super(s);
+//		// TODO Auto-generated constructor stub
+//	}
 
 	/**
 	 * 
@@ -15,7 +15,7 @@ public class Employee extends Customer implements Serializable
 	
 	private static final long serialVersionUID = 4873686581570039282L;
 	private int id;
-	private String name;
+	private String names;
 	private String address;
 	private int salary;
 
@@ -35,12 +35,12 @@ public class Employee extends Customer implements Serializable
 		this.id = id;
 	}
 
-	public String getName() {
-		return name;
+	public String getNames() {
+		return names;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setNames(String name) {
+		this.names = name;
 	}
 
 	public String getAddress() {
