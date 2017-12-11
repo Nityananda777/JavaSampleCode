@@ -1,6 +1,6 @@
-package com.core.ds;
+package com.core.ds.stack;
 
-public class StackUsingList<T> {
+public class StackDoubleLinkedList<T> {
 
 	Node<T> head;
 	Node<T> tail;
@@ -20,6 +20,7 @@ public class StackUsingList<T> {
 			size++;
 		} else {
 			tail.setNext(newNode);
+			newNode.setPrev(tail);
 			tail = newNode;
 			size++;
 		}
@@ -56,6 +57,16 @@ public class StackUsingList<T> {
 
 		Node<T> next;
 
+		public Node<T> getPrev() {
+			return prev;
+		}
+
+		public void setPrev(Node<T> prev) {
+			this.prev = prev;
+		}
+
+		Node<T> prev;
+
 		public Node<T> getNext() {
 			return next;
 		}
@@ -75,7 +86,7 @@ public class StackUsingList<T> {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		StackUsingList<String> s = new StackUsingList();
+		StackDoubleLinkedList<String> s = new StackDoubleLinkedList();
 		s.push("10");
 		s.push("11");
 		s.push("12");

@@ -1,6 +1,6 @@
-package com.core.ds;
+package com.core.ds.stack;
 
-public class StackDoubleLinkedList<T> {
+public class StackSingleLinkedList<T> {
 
 	Node<T> head;
 	Node<T> tail;
@@ -20,7 +20,6 @@ public class StackDoubleLinkedList<T> {
 			size++;
 		} else {
 			tail.setNext(newNode);
-			newNode.setPrev(tail);
 			tail = newNode;
 			size++;
 		}
@@ -57,16 +56,6 @@ public class StackDoubleLinkedList<T> {
 
 		Node<T> next;
 
-		public Node<T> getPrev() {
-			return prev;
-		}
-
-		public void setPrev(Node<T> prev) {
-			this.prev = prev;
-		}
-
-		Node<T> prev;
-
 		public Node<T> getNext() {
 			return next;
 		}
@@ -86,7 +75,7 @@ public class StackDoubleLinkedList<T> {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		StackDoubleLinkedList<String> s = new StackDoubleLinkedList();
+		StackSingleLinkedList<String> s = new StackSingleLinkedList();
 		s.push("10");
 		s.push("11");
 		s.push("12");

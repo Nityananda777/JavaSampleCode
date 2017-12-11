@@ -1,13 +1,14 @@
-package com.core.ds;
+package com.core.ds.stack;
 
 import java.util.Queue;
 import java.util.LinkedList;
 
-public class StackUsingQueue {
+public class StackUsingDouleQueue {
 
 	Queue<Integer> q1 = new LinkedList<Integer>();
 	Queue<Integer> q2 = new LinkedList<Integer>();
 	int size;
+
 
 	public void push(int item) {
 		size = q1.size();
@@ -28,7 +29,7 @@ public class StackUsingQueue {
 	}
 
 	public static void main(String[] args) {
-		StackUsingQueue s = new StackUsingQueue();
+		StackUsingDouleQueue s = new StackUsingDouleQueue();
 		s.push(10);
 		s.push(11);
 		s.push(12);
