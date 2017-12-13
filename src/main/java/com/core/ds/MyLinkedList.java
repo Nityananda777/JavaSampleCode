@@ -19,18 +19,6 @@ class CustomLinkedList<T> {
 			tail = newNode;
 		}
 	}
-	// public void add(T data) {
-	// Node<T> newNode = new Node<T>(data);
-	// if (head == null) {
-	// head = newNode;
-	// tail = newNode;
-	// } else {
-	// temp = head;
-	// head = newNode;
-	// newNode.setNext(temp);
-	// tail=newNode;
-	// }
-	// }
 
 	public void addFirst(T data) {
 		Node<T> newNode = new Node<T>(data);
@@ -60,7 +48,7 @@ class CustomLinkedList<T> {
 			} else if (refHead.getNext() == null) {
 				refHead = temp;
 				refHead.setNext(null);
-				temp = null; 
+				temp = null;
 				break;
 			} else {
 				temp = refHead;
@@ -90,6 +78,74 @@ class CustomLinkedList<T> {
 		}
 	}
 
+	public void addNode(T data, int position) {
+		int count = 0;
+		Node<T> prev = null;
+		Node<T> temp = null;
+		Node<T> current = head;
+		Node<T> newNode = new Node<T>(data);
+		while (current != null) {
+			if (prev == null) {
+				prev = head;
+				if (count == position) {
+					head = newNode;
+					head.setNext(prev);
+				}
+			} else if (count == position) {
+				temp = prev.getNext();
+				prev.setNext(newNode);
+				newNode.setNext(temp);
+				break;
+			} else {
+				prev = current;
+				current = current.getNext();
+			}
+			++count;
+			System.out.println("count is " + count);
+		}
+
+	}
+
+	public void deleteNode(int position) {
+		int count = 0;
+		Node<T> prev = null;
+		Node<T> current = head;
+		if (count == position) {
+			head = head.getNext();
+		}
+		while (current != null) {
+			if (count == position) {
+				prev.setNext(current.getNext());
+				break;
+			} else {
+				prev = current;
+				current = current.getNext();
+			}
+			++count;
+			System.out.println("delete count is " + count);
+		}
+	}
+
+	public void deleteNode(T data) {
+		int count = 0;
+		Node<T> prev = head;
+		Node<T> current = head.getNext();
+		if (head.getData() == data) {
+			head = head.getNext();
+		}
+		while (current != null) {
+			if (current.getData() == data) {
+				prev.setNext(current.getNext());
+				break;
+			} else {
+				prev = prev.getNext();
+				current = current.getNext();
+			}
+			++count;
+			System.out.println("count is " + count);
+		}
+	}
+
 	public void traverse() {
 		Node<T> temp = head;
 		while (true) {
@@ -98,11 +154,6 @@ class CustomLinkedList<T> {
 				temp = temp.getNext();
 			}
 		}
-	}
-
-	public Node<T> delete(Node<T> node) {
-		return node;
-
 	}
 
 	static public class Node<T> {
@@ -142,25 +193,10 @@ public class MyLinkedList {
 		sl.add("32");
 		sl.add("112");
 		sl.addFirst("89");
-		// // sl.addFirst(104);
-		// // sl.addAfterPerticularNode(54, 32);
-		// sl.add(46);
-		// sl.add(146);
-		// sl.addFirst(78);
-		// sl.addAfterPerticularNode(100, 3);
-		// sl.addAfterPerticularNode(200,5);
-		// sl.updatePerticularNodeValue("189","101");
-		// sl.deleteFirstNode();
-		// sl.deleteAfter(3);
-		// sl.deleteAfter(76);
-		// System.out.println("Before Deletion");
-		// System.out.println("After Deletion");
-		// sl.deleteAll();
-		// sl.addLast(555);
-		// System.out.println("before delete");
+		// sl.addNode("10", 0);
 		// sl.traverse();
-		// System.out.println("after delete");
-		// sl.removeLast("89");
+		System.out.println("After delete");
+		//sl.deleteNode(1);
 		sl.traverse();
 	}
 }
