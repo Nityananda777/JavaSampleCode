@@ -1,6 +1,42 @@
-package com.core.ds;
+package com.core.ds.linkedlist;
 
-public class SinglyLinkedListImpl<T> {
+class Node<T> implements Comparable<T> {
+
+	T value;
+	Node<T> nextRef;
+
+	public Node(T value, Node<T> value1) {
+		this.value = value;
+		this.nextRef = value1;
+	}
+
+	public T getValue() {
+		return value;
+	}
+
+	public void setValue(T value) {
+		this.value = value;
+	}
+
+	public Node<T> getNextRef() {
+		return nextRef;
+	}
+
+	public void setNextRef(Node<T> ref) {
+		this.nextRef = ref;
+	}
+
+	@Override
+	public int compareTo(T arg) {
+		if (arg == this.value) {
+			return 0;
+		} else {
+			return 1;
+		}
+	}
+}
+
+public class CircularaSingleLinkedList<T> {
 
 	private Node<T> head;
 	private Node<T> tail;
@@ -8,34 +44,30 @@ public class SinglyLinkedListImpl<T> {
 
 	public void add(T element) {
 		Node<T> nd = new Node<T>(element, null);
-		// nd.setValue(element);
 		System.out.println("Adding: " + element);
-		/**
-		 * check if the list is empty
-		 */
 		if (head == null) {
-			// since there is only one element, both head and
-			// tail points to the same object.
 			head = nd;
 			tail = nd;
 		} else {
-			// set current tail next link to new node
 			tail.setNextRef(nd);
-			// set tail as newly created node
 			tail = nd;
-			/*
-			 * if (tail.getNextRef() == null) { tail.setNextRef(head); }
-			 */
+			if (tail.getNextRef() == null) {
+				tail.setNextRef(head);
+			}
+
 		}
 	}
 
 	public void addFirst(T element) {
-
 		Node<T> newNode = new Node<T>(element, null);
 		System.out.println("Adding Element to FirstPosition : " + element);
 		Node<T> temp = head;
 		head = newNode;
 		head.setNextRef(temp);
+		tail = temp;
+		// if (tail.getNextRef() == null) {
+		// tail.setNextRef(head);
+		// }
 
 	}
 
@@ -43,7 +75,6 @@ public class SinglyLinkedListImpl<T> {
 
 		Node<T> referenceElement = head;
 		Node<T> temp;
-
 		while (true) {
 			if (referenceElement == null) {
 				System.out.println(afterElement + " NodeValue NotFound::adding as latElement");
@@ -239,6 +270,31 @@ public class SinglyLinkedListImpl<T> {
 		System.out.println("length is " + counter);
 	}
 
+	public int getNthNode(int n) {
+		Node current = head;
+		int counter = 0;
+		int value = 0;
+		while (current != null) {
+			if (counter == n) {
+				value = (Integer) current.getValue();
+			}
+			current = current.getNextRef();
+			counter++;
+		}
+		return value;
+	}
+
+	public int getMiddleNode() {
+		Node fast = head;
+		Node slow = head;
+		int val = 0;
+		while (fast != null && fast.getNextRef() != null) {
+			fast = fast.getNextRef().getNextRef();
+			slow = slow.getNextRef();
+		}
+		return (Integer) slow.getValue();
+	}
+
 	public boolean isCyclic() {
 		boolean isCyclic = false;
 		Node current = head;
@@ -270,6 +326,19 @@ public class SinglyLinkedListImpl<T> {
 		return isPalindrome;
 	}
 
+	public void removeDuplicate() {
+		Node<T> current = head;
+		Node<T> next = head.getNextRef();
+		while (current != null) {
+			if (next.getValue() == current.getValue()) {
+				current.setNextRef(next.getNextRef());
+				break;
+			} else {
+				current = current.getNextRef();
+			}
+		}
+	}
+
 	public Node nthFromLastNode(int n) {
 		Node firstPtr = head;
 		Node secondPtr = head;
@@ -284,92 +353,22 @@ public class SinglyLinkedListImpl<T> {
 		return secondPtr;
 	}
 
-	public void removeDuplicate() {
-		Node temp = head;
-		while (temp.getNextRef()!= null) {
-			if (temp.nextRef.value==temp.value) {
-				temp.nextRef = temp.nextRef.nextRef;
-			} else {
-				temp = temp.nextRef;
-			}
-		}
-	}
-
 	public static void main(String a[]) {
-		SinglyLinkedListImpl<Integer> sl = new SinglyLinkedListImpl<Integer>();
-		sl.add(10);
-		sl.add(12);
-		sl.add(13);
-		sl.add(14);
-		sl.add(15);
-		sl.add(15);
-
-	;
-		// sl.addFirst(89);
-		// // sl.addFirst(104);
-		// // sl.addAfterPerticularNode(54, 32);
-		sl.add(16);
-		System.out.println("is cyclic " + sl.isCyclic());
-		Node nthNodeFromLast = sl.nthFromLastNode(3);
-		System.out.println("3th node from end is : " + nthNodeFromLast.getValue());
-		// sl.add(146);
-		// sl.addFirst(78);
-		// sl.addAfterPerticularNode(100, 3);
-		// sl.addAfterPerticularNode(200,5);
-		// sl.updatePerticularNodeValue(189, 101);
-		// sl.deleteFirstNode();
-		// sl.deleteAfter(3);
-		// sl.deleteAfter(76);
-		// System.out.println("Before Deletion");
-		// System.out.println("After Deletion");
-		// sl.deleteAll();
-		// sl.addLast(555);
-		// System.out.println("before delete");
+		CircularaSingleLinkedList<Integer> sl = new CircularaSingleLinkedList<Integer>();
+		sl.addFirst(10);
+		sl.addFirst(12);
+		sl.addFirst(13);
+		sl.addFirst(14);
+		sl.addFirst(15);
+		sl.addFirst(16);
+		sl.addFirst(16);
+		// System.out.println("After reverse");
+		// sl.deleteNodePosition(2);
+		// sl.removeDuplicate();
 		// sl.traverse();
-		System.out.println("After reverse");
-		sl.deleteNodePosition(2);
+		// System.out.println("Value at position 3 is" + sl.getNthNode(3));
+		// System.out.println("Middle element is .." + sl.getMiddleNode());
 		sl.removeDuplicate();
 		sl.traverse();
-		// sl.deleteLast();
-		// System.out.println("after delete");
-		// sl.reverse();
-		// sl.lengthOfLinkedList();
-
-	}
-}
-
-class Node<T> implements Comparable<T> {
-
-	T value;
-	Node<T> nextRef;
-
-	public Node(T value, Node<T> value1) {
-		this.value = value;
-		this.nextRef = value1;
-	}
-
-	public T getValue() {
-		return value;
-	}
-
-	public void setValue(T value) {
-		this.value = value;
-	}
-
-	public Node<T> getNextRef() {
-		return nextRef;
-	}
-
-	public void setNextRef(Node<T> ref) {
-		this.nextRef = ref;
-	}
-
-	@Override
-	public int compareTo(T arg) {
-		if (arg == this.value) {
-			return 0;
-		} else {
-			return 1;
-		}
 	}
 }

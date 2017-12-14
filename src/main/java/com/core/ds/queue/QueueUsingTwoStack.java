@@ -4,7 +4,8 @@ public class QueueUsingTwoStack {
 
 	int size = 5;
 	int[] queue = new int[size];
-	int font, rear = 0;
+	int font=-1; 
+	int rear = 0;
 	Stacks stack1;
 	Stacks stack2;
 
@@ -14,7 +15,7 @@ public class QueueUsingTwoStack {
 	}
 
 	public boolean isFull() {
-		if (rear == size) {
+		if (stack1.isFull()) {
 			return true;
 		}
 		return false;
@@ -28,14 +29,14 @@ public class QueueUsingTwoStack {
 	}
 
 	public void enQueue(int item) {
-		if (!stack1.isFull()) {
+		if (!isFull()) {
 			stack1.push(item);
 		}
 	}
 
 	public int deQueue() {
 		if (stack2.isEmpty()) {
-			while (!stack1.isEmpty()) {
+			while (!isEmpty()) {
 				stack2.push(stack1.pop());
 			}
 		}

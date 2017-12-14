@@ -1,4 +1,4 @@
-package com.core.ds;
+package com.core.ds.linkedlist;
 
 public class SwapLinkedListNode<T> {
 	NodeF currentX;
