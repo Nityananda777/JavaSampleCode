@@ -22,6 +22,7 @@ public class BinarySearchTree {
 		if (root == null) {
 			return;
 		}
+		
 		inOder(root.left);
 		System.out.println(root.key);
 		inOder(root.right);
@@ -46,6 +47,7 @@ public class BinarySearchTree {
 		return root;
 	}
 
+	
 	public Node deleteKey(Node root, int key) {
 		if (root == null || root.key == key) {
 			return root;

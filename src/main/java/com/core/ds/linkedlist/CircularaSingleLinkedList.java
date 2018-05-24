@@ -60,7 +60,7 @@ public class CircularaSingleLinkedList<T> {
 
 	public void addFirst(T element) {
 		Node<T> newNode = new Node<T>(element, null);
-		System.out.println("Adding Element to FirstPosition : " + element);
+		//System.out.println("Adding Element to FirstPosition : " + element);
 		Node<T> temp = head;
 		head = newNode;
 		head.setNextRef(temp);
@@ -249,6 +249,7 @@ public class CircularaSingleLinkedList<T> {
 		Node<T> prev = null;
 		Node<T> current = head;
 		while (current != null) {
+			
 			next = current.getNextRef();
 			current.setNextRef(prev);
 			prev = current;
@@ -366,9 +367,10 @@ public class CircularaSingleLinkedList<T> {
 		// sl.deleteNodePosition(2);
 		// sl.removeDuplicate();
 		// sl.traverse();
-		// System.out.println("Value at position 3 is" + sl.getNthNode(3));
+		 System.out.println("Value at position 3 is" + sl.getNthNode(3));
 		// System.out.println("Middle element is .." + sl.getMiddleNode());
-		sl.removeDuplicate();
+		//sl.removeDuplicate();
+		 sl.nthFromLastNode(4);
 		sl.traverse();
 	}
 }

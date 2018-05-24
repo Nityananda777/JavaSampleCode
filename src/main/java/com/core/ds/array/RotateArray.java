@@ -11,22 +11,9 @@ public class RotateArray {
 	void leftRotatebyOne(int arr[], int n) {
 		int i, temp;
 		temp = arr[0];
-		for (i = 0; i < n - 1; i++)
+		for (i = 0; i < n - 1; i++) {
 			arr[i] = arr[i + 1];
-		arr[i] = temp;
-	}
-
-	void rightRotate(int arr[], int d, int n) {
-		int i;
-		for (i = 0; i < d; i++)
-			leftRotatebyOne(arr, n);
-	}
-
-	void rightRotatebyOne(int arr[], int n) {
-		int i, temp;
-		temp = arr[0];
-		for (i = 0; i < n - 1; i++)
-			arr[i] = arr[i + 1];
+		}
 		arr[i] = temp;
 	}
 
@@ -42,8 +29,6 @@ public class RotateArray {
 		RotateArray rotate = new RotateArray();
 		int arr[] = { 1, 2, 3, 4, 5, 6, 7 };
 		rotate.leftRotate(arr, 2, 7);
-		rotate.printArray(arr, 7);
-		rotate.rightRotate(arr, 6, 7);
 		rotate.printArray(arr, 7);
 	}
 }

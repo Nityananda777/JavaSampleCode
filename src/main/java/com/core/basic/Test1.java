@@ -1,24 +1,26 @@
 package com.core.basic;
 
-interface XI {
-	void mm();
-}
 
-class XM implements XI {
+class XM {
 
-	@Override
 	public void mm() {
 		// TODO Auto-generated method stub
+		System.out.println("hello world");
+	}
 
+	public void m1() {
+		// TODO Auto-generated method stub
+		System.out.println("hello india  X");
+		mm();
 	}
 }
 
-class XL implements XI {
+class XL extends XM {
 
-	@Override
 	public void mm() {
 		// TODO Auto-generated method stub
 
+		System.out.println("hello india  XL");
 	}
 
 }
@@ -26,6 +28,7 @@ class XL implements XI {
 public class Test1 {
 
 	public static void main(String[] args) {
-	 
+		XL x = new XL();
+		x.m1();
 	}
 }

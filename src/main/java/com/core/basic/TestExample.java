@@ -1,26 +1,23 @@
 package com.core.basic;
 
 class Abc {
-	public Abc mm(int x, String y) {
+	public void mm(String y) {
 		System.out.println("Abc");
-		return null;
 	}
+	public void mm(Object y) {
+		System.out.println("Abcmm");
+	}
+	
 }
 
-class Bde extends Abc {
-	public Abc mm(int x, String y) {
-		System.out.println("Bde");
-		return null;
-	}
-}
 
 public class TestExample {
 
 	public static  void main(String[] args) {
 		// TODO Auto-generated method stub
 
-		Abc a = new Bde();
-		a.mm(10, "raja");
+		Abc a = new Abc();
+	//	a.mm(10, "raja");
 	}
 
 }

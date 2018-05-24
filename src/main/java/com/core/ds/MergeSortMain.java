@@ -2,25 +2,11 @@ package com.core.ds;
 
 public class MergeSortMain {
 
-	/*
-	 * @author: Arpit Mandliya
-	 */
-	static int arr[] = { 100, 20, 15, 30, 5, 75, 40 };
+	static int arr[] = { 10, 5, 6, 4, 2, 11, 9 };
 
 	public static void main(String args[]) {
-		// Print array before merge sort
-		System.out.println("Array before sorting:");
-		printArray(arr, 0, arr.length - 1);
-		System.out.println("-----------------------------");
-
 		mergeSort(0, arr.length - 1);
-
-		System.out.println("-----------------------------");
-
-		// Print array after sorting
-		System.out.println("Array After sorting:");
 		printArray(arr, 0, arr.length - 1);
-
 	}
 
 	// Recursive algorithm for merge sort
@@ -34,17 +20,12 @@ public class MergeSortMain {
 			// Merge left and right half
 			merge(start, mid, end);
 		}
-
 	}
 
 	private static void merge(int start, int mid, int end) {
 		// Initializing temp array and index
 		int[] tempArray = new int[arr.length];
 		int tempArrayIndex = start;
-
-		System.out.print("Before Merging:  ");
-		printArray(arr, start, end);
-
 		int startIndex = start;
 		int midIndex = mid + 1;
 
@@ -69,10 +50,6 @@ public class MergeSortMain {
 		for (int i = start; i <= end; i++) {
 			arr[i] = tempArray[i];
 		}
-
-		System.out.print("After merging:   ");
-		printArray(tempArray, start, end);
-		System.out.println();
 	}
 
 	public static void printArray(int arr[], int start, int end) {

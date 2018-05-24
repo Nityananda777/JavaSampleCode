@@ -1,3 +1,4 @@
+
 package com.core.ds.linkedlist;
 
 public class DoubleLinkedList<T> {
@@ -15,12 +16,12 @@ public class DoubleLinkedList<T> {
 			tail.setNext(newNode);
 			newNode.setPrev(tail);
 			tail = newNode;
-			/*if (tail.getNext() == null) {
-				tail.setNext(head);
-			}*/
+			/*
+			 * if (tail.getNext() == null) { tail.setNext(head); }
+			 */
 		}
-
 	}
+
 	public void addAtStart(T data) {
 		Node newNode = new Node(data);
 		if (head == null) {
@@ -30,9 +31,30 @@ public class DoubleLinkedList<T> {
 			newNode.setNext(head);
 			head.setPrev(newNode);
 			head = newNode;
-			/*if (tail.getNext() == null) {
-				tail.setNext(head);
-			}*/
+			/*
+			 * if (tail.getNext() == null) { tail.setNext(head); }
+			 */
+		}
+
+	}
+
+	public void removeStart(T data) {
+		Node newNode = new Node(data);
+		head = head.getNext();
+
+	}
+
+	public void removeEnd() {
+		Node refNode = null;
+		temp = head;
+		while (true) {
+			if (temp.getNext() == null) {
+				refNode.setNext(null);
+				break;
+			} else {
+				refNode = temp;
+				temp = temp.getNext();
+			}
 		}
 
 	}
@@ -66,21 +88,23 @@ public class DoubleLinkedList<T> {
 		head = prev;
 		traverse();
 	}
-	 public Node deleteDuplicates() {
-	        if(head == null || head.next == null)
-	            return head;
-	        Node p = head;
-	 
-	        while( p!= null && p.next != null){
-	            if(p.getData() == p.next.getData()){
-	                p.next = p.next.next;
-	            }else{
-	                p = p.next; 
-	            }
-	        }
-	 
-	        return head;
-	    }
+
+	public Node deleteDuplicates() {
+		if (head == null || head.next == null)
+			return head;
+		Node p = head;
+
+		while (p != null && p.next != null) {
+			if (p.getData() == p.next.getData()) {
+				p.next = p.next.next;
+			} else {
+				p = p.next;
+			}
+		}
+
+		return head;
+	}
+
 	public boolean isCyclics() {
 		Node current = head;
 		while (current != null) {
@@ -104,22 +128,22 @@ public class DoubleLinkedList<T> {
 		}
 		return second;
 	}
-	 public Node findMiddleNode()
-	 {
-	 Node slowPointer, fastPointer; 
-	  slowPointer = fastPointer = head; 
 
-	  while(fastPointer !=null) { 
-	   fastPointer = fastPointer.next; 
-	   if(fastPointer != null && fastPointer.next != null) { 
-	    slowPointer = slowPointer.next; 
-	    fastPointer = fastPointer.next; 
-	   } 
-	  } 
+	public Node findMiddleNode() {
+		Node slowPointer, fastPointer;
+		slowPointer = fastPointer = head;
 
-	  return slowPointer; 
+		while (fastPointer != null) {
+			fastPointer = fastPointer.next;
+			if (fastPointer != null && fastPointer.next != null) {
+				slowPointer = slowPointer.next;
+				fastPointer = fastPointer.next;
+			}
+		}
 
-	 }
+		return slowPointer;
+
+	}
 
 	static public class Node<T> {
 		T data;
@@ -168,14 +192,16 @@ public class DoubleLinkedList<T> {
 		d.addAtStart("15");
 		d.addAtStart("16");
 		d.addAtStart("17");
-		
+
 		d.addAtStart("19");
 		d.addAtStart("19");
 		// d.traverse();
 		// d.traverseReverse();
 		// System.out.println(d.isCyclics());
-		//System.out.println(d.findMiddleElement().getData());
+		// System.out.println(d.findMiddleElement().getData());
 		System.out.println(d.deleteDuplicates());
+		// d.traverse();
+	//	d.removeEnd();
 		d.traverse();
-}
+	}
 }
