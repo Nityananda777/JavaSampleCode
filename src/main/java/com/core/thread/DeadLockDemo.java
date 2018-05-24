@@ -1,4 +1,4 @@
-package com.deadlock;
+package com.core.thread;
 
 public class DeadLockDemo {
 

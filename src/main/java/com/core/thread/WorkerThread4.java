@@ -1,4 +1,4 @@
-package com.core1;
+package com.core.thread;
 
 import java.util.concurrent.CyclicBarrier;
 

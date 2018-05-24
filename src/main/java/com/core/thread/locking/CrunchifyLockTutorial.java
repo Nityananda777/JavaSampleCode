@@ -1,4 +1,4 @@
-package com.lock;
+package com.core.thread.locking;
 
 import java.util.Random;
 import java.util.concurrent.locks.Lock;

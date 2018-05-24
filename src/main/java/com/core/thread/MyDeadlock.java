@@ -1,4 +1,4 @@
-package com.deadlock;
+package com.core.thread;
 
 public class MyDeadlock {
 	public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package com.exchange;
+package com.core.thread;
 
 import java.util.concurrent.Exchanger;
 

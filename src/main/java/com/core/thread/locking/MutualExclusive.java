@@ -1,4 +1,4 @@
-package com.core2;
+package com.core.thread.locking;
 
 import java.util.concurrent.Semaphore;
 

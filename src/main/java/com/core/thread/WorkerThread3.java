@@ -1,20 +1,18 @@
-package com.core1;
+package com.core.thread;
 
 import java.util.concurrent.BrokenBarrierException;
 import java.util.concurrent.CyclicBarrier;
 
-public class WorkerThread2 implements Runnable {
+public class WorkerThread3 implements Runnable {
 	CyclicBarrier latch;
 
-	public WorkerThread2(CyclicBarrier latch) {
+	public WorkerThread3(CyclicBarrier latch) {
 		this.latch = latch;
-
-
 	}
 
 	public void run() {
 	
-			System.out.println("WorkerThread2 thread" + Thread.currentThread().getName());
+			System.out.println("WorkerThread3 thread" + Thread.currentThread().getName());
 			//Thread.sleep(delay);
 			try {
 				latch.await();
@@ -27,5 +25,3 @@ public class WorkerThread2 implements Runnable {
 			}
 		}
 	}
-
-

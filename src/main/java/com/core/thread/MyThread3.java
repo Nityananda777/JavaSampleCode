@@ -1,23 +1,21 @@
-package com.core;
+package com.core.thread;
 
 import java.util.concurrent.CountDownLatch;
 
-public class MyThread2 extends Thread {
+public class MyThread3 extends Thread {
 	CountDownLatch latch;
 	int delay;
 	String name;
 
-	public MyThread2(int delay, CountDownLatch latch, String name) {
+	MyThread3(int delay, CountDownLatch latch, String name) {
 		this.latch = latch;
-		this.delay=delay;
-		this.name=name;
-		
+		this.delay = delay;
+		this.name = name;
+
 	}
-
-
 	public void run() {
 		try {
-			System.out.println("MyThread2 thread" + Thread.currentThread().getName());
+			System.out.println("MyThread3 thread" + Thread.currentThread().getName());
 			Thread.sleep(delay);
 			latch.countDown();
 		} catch (InterruptedException e) {
