@@ -22,21 +22,21 @@ public class PreOrderTest {
 	}
 
 	// An iterative process to print preorder traversal of Binary tree
-	void iterativePreorder(Node1 node) {
-		if (node == null) {
+	void iterativePreorder(Node1 root) {
+		if (root == null)
 			return;
-		}
-		Stack<Node1> nodeStack = new Stack<Node1>();
-		nodeStack.push(root);
-		while (nodeStack.empty() == false) {
-			Node1 mynode = nodeStack.peek();
-			System.out.print(mynode.data + " ");
-			nodeStack.pop();
-			if (mynode.right != null) {
-				nodeStack.push(mynode.right);
+
+		Stack<Node1> s = new Stack<Node1>();
+		s.push(root);
+
+		while (!s.isEmpty()) {
+			root = s.pop();
+			System.out.println(root.data);
+			if (root.right != null) {
+				s.push(root.right);
 			}
-			if (mynode.left != null) {
-				nodeStack.push(mynode.left);
+			if (root.left != null) {
+				s.push(root.left);
 			}
 		}
 	}
@@ -45,7 +45,7 @@ public class PreOrderTest {
 		if (node == null) {
 			return;
 		}
-		System.out.print(","+node.data);
+		System.out.print("," + node.data);
 		printPreorder(node.left);
 		printPreorder(node.right);
 
@@ -79,8 +79,8 @@ public class PreOrderTest {
 		tree.root.left.right = new Node1(5);
 		tree.root.right.left = new Node1(4);
 		tree.root.right.right = new Node1(7);
-		// tree.iterativePreorder();
-		//tree.printPreorder(tree.root);
-		tree.printInorder(tree.root);
+		tree.iterativePreorder();
+		// tree.printPreorder(tree.root);
+		// tree.printInorder(tree.root);
 	}
 }

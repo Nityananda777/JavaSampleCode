@@ -1,4 +1,4 @@
-package com.core.java8.lamda;
+package com.core.java8;
 
 import java.util.Arrays;
 import java.util.Comparator;

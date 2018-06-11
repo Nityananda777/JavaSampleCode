@@ -17,18 +17,22 @@ public class InOrderTest {
 
 	Node1 root;
 
-
-		public void inOrderWithoutRecursion() {
-		Stack<Node1> nodes = new Stack<>();
-		Node1 current = root;
-		while (!nodes.isEmpty() || current != null) {
-			if (current != null) {
-				nodes.push(current);
-				current = current.left;
+	public void inOrderWithoutRecursion() {
+		if (root == null) {
+			return;
+		}
+		Stack<Node1> s = new Stack<Node1>();
+		while (true) {
+			if (root != null) {
+				s.push(root);
+				root = root.left;
 			} else {
-				Node1 node = nodes.pop();
-				System.out.printf("%s ", node.data);
-				current = node.right;
+				if (s.isEmpty()) {
+					break;
+				}
+				root = s.pop();
+				System.out.println(root.data);
+				root = root.right;
 			}
 		}
 	}

@@ -1,8 +1,9 @@
-package com.core.java8.lamda;
+package com.core.java8;
 
-import com.core.java8.lamda.LamdaTest.interface1;
+import com.core.java8.LamdaTest1.interface1;
 
-class LamdaTest {
+class LamdaTest1 {
+	
 	interface interface1 {
 		public void display();
 
