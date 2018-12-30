@@ -7,24 +7,26 @@ public class PostOrderTest {
 	Node root;
 
 	public void postOrderWithoutRecursion() {
-		Stack stack1 = new Stack<>();
-		Stack stack2 = new Stack<>();
-		stack1.push(root);
-		while (!stack1.isEmpty()) {
-			Node temp = (Node) stack1.pop();
-			stack2.push(temp);
-			if (temp.left != null) {
-				stack1.push(temp.left);
+		Stack<Node> s1 = new Stack<Node>();
+		Stack<Node> s2 = new Stack<Node>();
+		if (root != null) {
+			s1.push(root);
+			while (!s1.isEmpty()) {
+				root = s1.pop();
+				s2.push(root);
+				if (root.left != null) {
+					s1.push(root.left);
+				}
+				if (root.right != null) {
+					s1.push(root.right);
+				}
 			}
-			if (temp.right != null) {
-				stack1.push(temp.right);
-			}
-		}
-		while (!stack2.isEmpty()) {
-			Node temp1=(Node) stack2.pop();
-			System.out.println(temp1.data);
-		}
 
+		}
+		while (!s2.isEmpty()) {
+			root = s2.pop();
+			System.out.println(root.data);
+		}
 	}
 
 	public static void main(String args[]) {
