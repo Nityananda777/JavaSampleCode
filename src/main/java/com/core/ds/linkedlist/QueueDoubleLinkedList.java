@@ -1,6 +1,6 @@
-package com.core.ds;
+package com.core.ds.linkedlist;
 
-public class QueueUsingList<T> {
+public class QueueDoubleLinkedList<T> {
 
 	int size = 0;
 	Node<T> rear, font = null;
@@ -17,6 +17,7 @@ public class QueueUsingList<T> {
 			size++;
 		} else {
 			font.setNext(newNode);
+			newNode.setPrev(font);
 			font = newNode;
 			size++;
 		}
@@ -32,13 +33,21 @@ public class QueueUsingList<T> {
 	}
 
 	class Node<T> {
+		Node<T> next;
+		Node<T> prev;
 		T data;
 
 		Node(T d) {
 			this.data = d;
 		}
 
-		Node<T> next;
+		public Node<T> getPrev() {
+			return prev;
+		}
+
+		public void setPrev(Node<T> prev) {
+			this.prev = prev;
+		}
 
 		public Node<T> getNext() {
 			return next;
@@ -55,12 +64,11 @@ public class QueueUsingList<T> {
 		public void setData(T data) {
 			this.data = data;
 		}
-
 	}
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		QueueUsingList<String> t = new QueueUsingList<String>();
+		QueueDoubleLinkedList<String> t = new QueueDoubleLinkedList<String>();
 		t.enQueue("10");
 		t.enQueue("20");
 		t.enQueue("30");

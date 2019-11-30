@@ -1,4 +1,4 @@
-package com.core.ds;
+package com.core.ds.array;
 
 class MyQueue {
 	int rear = 0;
