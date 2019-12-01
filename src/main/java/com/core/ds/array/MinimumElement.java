@@ -1,9 +1,13 @@
 package com.core.ds.array;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MinimumElement {
 
 	public static void main(String[] args) {
 		int a[] = { 10, 9, 3, 5, 2, 1,0, 7 };
+
 		int max =a[0];
 		for (int i = 1; i < a.length-1; i++) {
 			if (a[i+1] < max) {
@@ -11,6 +15,8 @@ public class MinimumElement {
 			}
 		}
 		System.out.println("Smallest element is " + max);
+		List<Integer> l=new ArrayList<>();
+		l.stream().mapToInt(p->p.intValue()).toArray();
 	}
 
 }

@@ -230,7 +230,7 @@ public class DoubleLinkedList<T> {
 		// d.traverse();
 		d.remove(new Node("15"));
 		// d.traverseReverse1();
-		//d.traverse();
+		d.traverse();
 		d.traverseReverse();
 	}
 }

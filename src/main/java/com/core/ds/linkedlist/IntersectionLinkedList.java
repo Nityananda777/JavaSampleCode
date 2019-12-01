@@ -3,8 +3,6 @@ package com.core.ds.linkedlist;
 public class IntersectionLinkedList
 {
     Node head;  // head of list
- 
-    /* Linked list Node*/
     class Node
     {
         int data;
@@ -15,20 +13,15 @@ public class IntersectionLinkedList
             next = null;
         }
     }
- 
-    /* Function to get Union of 2 Linked Lists */
+
     void getUnion(Node head1, Node head2)
     {
         Node t1 = head1, t2 = head2;
- 
-        //insert all elements of list1 in the result
         while (t1 != null)
         {
             push(t1.data);
             t1 = t1.next;
         }
- 
-        // insert those elements of list2 that are not present
         while (t2 != null)
         {
             if (!isPresent(head, t2.data))
@@ -41,10 +34,6 @@ public class IntersectionLinkedList
     {
         Node result = null;
         Node t1 = head1;
- 
-        // Traverse list1 and search each element of it in list2.
-        // If the element is present in list 2, then insert the
-        // element to result
         while (t1 != null)
         {
             if (isPresent(head2, t1.data))
@@ -52,8 +41,6 @@ public class IntersectionLinkedList
             t1 = t1.next;
         }
     }
- 
-    /* Utility function to print list */
     void printList()
     {
         Node temp = head;
@@ -64,25 +51,14 @@ public class IntersectionLinkedList
         }
         System.out.println();
     }
- 
- 
-    /*  Inserts a node at start of linked list */
+
     void push(int new_data)
     {
-        /* 1 & 2: Allocate the Node &
-                  Put in the data*/
         Node new_node = new Node(new_data);
- 
-        /* 3. Make next of new Node as head */
         new_node.next = head;
- 
-        /* 4. Move the head to point to new Node */
         head = new_node;
     }
- 
- 
-    /* A utilty function that returns true if data is present
-       in linked list  else return false */
+
     boolean isPresent (Node head, int data)
     {
         Node t = head;
@@ -94,9 +70,6 @@ public class IntersectionLinkedList
         }
         return false;
     }
- 
- 
-    /* Drier program to test above functions */
     public static void main(String args[])
     {
     	IntersectionLinkedList llist1 = new IntersectionLinkedList();
@@ -131,4 +104,4 @@ public class IntersectionLinkedList
         System.out.println("Union List is");
         unin.printList();
     }
-} /* This code is contributed by Rajat Mishra */
+}
