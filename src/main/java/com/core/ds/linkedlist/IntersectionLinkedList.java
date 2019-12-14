@@ -1,107 +1,92 @@
 package com.core.ds.linkedlist;
 
-public class IntersectionLinkedList
-{
+public class IntersectionLinkedList {
     Node head;  // head of list
-    class Node
-    {
-        int data;
-        Node next;
-        Node(int d)
-        {
-            data = d;
-            next = null;
-        }
-    }
 
-    void getUnion(Node head1, Node head2)
-    {
-        Node t1 = head1, t2 = head2;
-        while (t1 != null)
-        {
-            push(t1.data);
-            t1 = t1.next;
-        }
-        while (t2 != null)
-        {
-            if (!isPresent(head, t2.data))
-                push(t2.data);
-            t2 = t2.next;
-        }
-    }
- 
-    void getIntersection(Node head1, Node head2)
-    {
-        Node result = null;
-        Node t1 = head1;
-        while (t1 != null)
-        {
-            if (isPresent(head2, t1.data))
-                push(t1.data);
-            t1 = t1.next;
-        }
-    }
-    void printList()
-    {
+
+    void printList(Node head) {
         Node temp = head;
-        while(temp != null)
-        {
-            System.out.print(temp.data+" ");
+        while (temp != null) {
+            System.out.print(temp.value + " ");
             temp = temp.next;
         }
         System.out.println();
     }
 
-    void push(int new_data)
-    {
+    void push(int new_data) {
         Node new_node = new Node(new_data);
         new_node.next = head;
         head = new_node;
     }
 
-    boolean isPresent (Node head, int data)
-    {
-        Node t = head;
-        while (t != null)
-        {
-            if (t.data == data)
-                return true;
-            t = t.next;
+    public Node findIntersection(Node node1, Node node2) {
+        Node temp1 = node1;
+        Node temp2 = node2;
+        int lengthNode1 = 0;
+        int lengthNode2 = 0;
+        //Find length
+        while (temp1.next != null) {
+            {
+                temp1 = temp1.next;
+                lengthNode1++;
+            }
+            while (temp2.next != null) {
+                {
+                    temp2 = temp2.next;
+                    lengthNode2++;
+                }
+            }
         }
-        return false;
+        //find difference
+        Node dif1 = head;
+        Node diff2 = head;
+        int difference = 0;
+        if (lengthNode1 > lengthNode2) {
+            difference = lengthNode1 - lengthNode2;
+            int i = 0;
+            while (i < difference) {
+                dif1 = dif1.next;
+                i++;
+            }
+        } else {
+            difference = lengthNode2 - lengthNode1;
+            int j = 0;
+            while (j < difference) {
+                diff2 = diff2.next;
+                j++;
+            }
+        }
+        //find common node
+        while (dif1 != null && diff2 != null) {
+            if (dif1 == diff2) {
+                return dif1;
+            }
+            dif1 = dif1.next;
+            diff2 = diff2.next;
+        }
+        return  null;
     }
-    public static void main(String args[])
-    {
-    	IntersectionLinkedList llist1 = new IntersectionLinkedList();
-    	IntersectionLinkedList llist2 = new IntersectionLinkedList();
-    	IntersectionLinkedList unin = new IntersectionLinkedList();
-    	IntersectionLinkedList intersecn = new IntersectionLinkedList();
- 
+
+
+    public static void main(String args[]) {
+        IntersectionLinkedList llist1 = new IntersectionLinkedList();
+        IntersectionLinkedList llist2 = new IntersectionLinkedList();
+
+
         /*create a linked lits 10->15->5->20 */
         llist1.push(20);
         llist1.push(4);
         llist1.push(15);
         llist1.push(10);
- 
+
         /*create a linked lits 8->4->2->10 */
         llist2.push(10);
         llist2.push(2);
         llist2.push(4);
         llist2.push(8);
- 
-        intersecn.getIntersection(llist1.head, llist2.head);
-        unin.getUnion(llist1.head, llist2.head);
- 
-        System.out.println("First List is");
-        llist1.printList();
- 
-        System.out.println("Second List is");
-        llist2.printList();
- 
-        System.out.println("Intersection List is");
-        intersecn.printList();
- 
-        System.out.println("Union List is");
-        unin.printList();
+
+        llist1.head= llist1.findIntersection(llist1.head,llist2.head);
+
+        llist1.printList(llist1.head);
     }
 }

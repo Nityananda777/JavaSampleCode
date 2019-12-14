@@ -1,86 +1,70 @@
 package com.core.ds.linkedlist;
 
 public class MergeLinkedList {
-	NodeM head;
+     Node head;
 
-	public void addToFront(int data) {
-		NodeM n = new NodeM(data);
-		n.next = head;
-		head = n;
-	}
+    public void addNode(Node node) {
+        if (head == null) {
+            head = node;
+        } else {
+            Node temp = head;
+            while (temp.next != null) {
+                temp = temp.next;
+            }
+            temp.next = node;
+        }
+    }
 
-	public void printList() {
-		NodeM tmp = head;
-		while (tmp != null) {
-			System.out.print(tmp.data + " ");
-			tmp = tmp.next;
-		}
-		System.out.println();
-	}
+    public void printList(Node head) {
+        Node tmp = head;
+        while (tmp != null) {
+            System.out.print(tmp.value + " ");
+            tmp = tmp.next;
+        }
+        System.out.println();
+    }
 
-	public void mergeList(MergeLinkedList list) {
+    public Node mergeList(Node node1, Node node2) {
+        Node head = new Node(0);
+        Node newNode = head;
+        while (node1 != null && node2 != null) {
+            if ((Integer) node1.value < (Integer) node2.value) {
+                newNode.next = node1;
+                node1 = node1.next;
+            } else {
+                newNode.next = node2;
+                node2 = node2.next;
+            }
+            newNode = newNode.next;
+        }
+        if (node1 != null) {
+            newNode.next = node1;
+        }
+        if (node2 != null) {
+            newNode.next = node2;
+        }
+        return head.next;
+    }
 
-		if (list == null || list.head == null) {
-			return;
-		}
-		if (head == null) {
-			head = list.head;
-			return;
-		}
-		NodeM tmp1 = head;
-		NodeM tmp2 = list.head;
-		if (tmp1.data < tmp2.data) {
-			head = tmp1;
-			tmp1 = tmp1.next;
-		} else {
-			head = tmp2;
-			tmp2 = tmp2.next;
-		}
-		NodeM mergedNext = head;
+    public static void main(String[] args) {
+        MergeLinkedList list1 = new MergeLinkedList();
+        MergeLinkedList list2 = new MergeLinkedList();
+        list1.addNode(new Node(6));
+        list1.addNode(new Node(7));
+        list1.addNode(new Node(8));
+        list1.addNode(new Node(9));
+        list1.addNode(new Node(10));
+        list1.addNode(new Node(11));
 
-		while (tmp1 != null && tmp2 != null) {
-			if (tmp1.data < tmp2.data) {
-				mergedNext.next = tmp1;
-				tmp1 = tmp1.next;
-			} else {
-				mergedNext.next = tmp2;
-				tmp2 = tmp2.next;
-			}
-			mergedNext = mergedNext.next;
-		}
 
-		if (tmp1 != null) {
-			mergedNext.next = tmp1;
-		} else {
-			mergedNext.next = tmp2;
-		}
-	}
+        list2.addNode(new Node(2));
+        list2.addNode(new Node(3));
+        list2.addNode(new Node(4));
+        list2.addNode(new Node(5));
 
-	public static void main(String[] args) {
-		MergeLinkedList list1 = new MergeLinkedList();
-		list1.addToFront(9);
-		list1.addToFront(8);
-		list1.addToFront(6);
-		list1.addToFront(5);
-		list1.addToFront(4);
-		list1.addToFront(2);
 
-		MergeLinkedList list2 = new MergeLinkedList();
-		list2.addToFront(7);
-		list2.addToFront(3);
-		list2.addToFront(1);
-
-		list1.mergeList(list2);
-		System.out.println("Merged List:");
-		list1.printList();
-	}	
-}
-
-class NodeM {
-	int data;
-	NodeM next;
-
-	public NodeM(int data) {
-		this.data = data;
-	}
+        System.out.println("....After Merge of LinkedList....");
+        list1.head = list1.mergeList(list1.head, list2.head);
+        list1.printList(list1.head);
+    }
 }

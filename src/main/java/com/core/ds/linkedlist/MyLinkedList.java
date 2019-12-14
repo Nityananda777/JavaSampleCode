@@ -156,6 +156,7 @@ class CustomLinkedList<T> {
 		}
 	}
 
+
 	static public class Node<T> {
 		T data;
 		Node<T> next;
