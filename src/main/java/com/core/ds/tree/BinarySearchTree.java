@@ -2,91 +2,46 @@ package com.core.ds.tree;
 
 public class BinarySearchTree {
 
-	class Node {
-		Node left;
-		Node right;
-		int key;
+    BinaryNode root;
 
-		Node(int key) {
-			this.key = key;
-		}
-	}
+    void insert(int val) {
+        insert(root, val);
+    }
 
-	static Node root;
+    BinaryNode insert(BinaryNode currNode, int val) {
+        BinaryNode node = new BinaryNode(val);
+        if (currNode == null) {
+            currNode = node;
+        } else if (val < currNode.data) {
+            currNode.left = insert(currNode.left, val);
+        } else if (val > currNode.data) {
+            currNode.right = insert(currNode.right, val);
+        }
+        return currNode;
+    }
 
-	public void inOrderD() {
-		inOder(root);
-	}
+    BinaryNode display(BinaryNode node) {
+        if (node != null) {
+            display(node.left);
+            System.out.print(" " + node.data);
+            display(node.right);
+        }
+        return node;
+    }
 
-	public void inOder(Node root) {
-		if (root == null) {
-			return;
-		}
-		
-		inOder(root.left);
-		System.out.println(root.key);
-		inOder(root.right);
 
-	}
+    public static void main(String[] args) {
+        BinarySearchTree tree = new BinarySearchTree();
+        tree.insert(1);
+        tree.insert(5);
+        tree.insert(6);
+        tree.insert(3);
+        tree.insert(9);
+        tree.insert(8);
+        tree.insert(2);
+        tree.insert(4);
+        tree.insert(7);
+        tree.display(tree.root);
 
-	public void insert(int key) {
-
-		root = insertKey(root, key);
-	}
-
-	public Node insertKey(Node root, int key) {
-		if (root == null) {
-			root = new Node(key);
-			return root;
-		}
-		if (root.key > key) {
-			root.left = insertKey(root.left, key);
-		} else if (root.key < key) {
-			root.right = insertKey(root.right, key);
-		}
-		return root;
-	}
-
-	
-	public Node deleteKey(Node root, int key) {
-		if (root == null || root.key == key) {
-			return root;
-		}
-		if (root.key > key) {
-			root.left = deleteKey(root.left, key);
-		} else if (root.key < key) {
-			root.right = insertKey(root.right, key);
-		}
-		return root;
-	}
-
-	public Node search(Node root, int key) {
-		// Base Cases: root is null or key is present at root
-		if (root == null || root.key == key)
-			return root;
-
-		// val is greater than root's key
-		if (root.key > key)
-			return search(root.left, key);
-
-		// val is less than root's key
-		return search(root.right, key);
-	}
-
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		BinarySearchTree b = new BinarySearchTree();
-		b.insert(10);
-		b.insert(40);
-		b.insert(30);
-		b.insert(60);
-		b.insert(70);
-		b.insert(9);
-		b.insert(12);
-		b.insert(11);
-		b.inOrderD();
-
-		System.out.println(b.search(root, 9).key);
-	}
-
+    }
 }

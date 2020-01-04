@@ -38,7 +38,6 @@ public class QueueUsingArray {
 	}
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		QueueUsingArray s = new QueueUsingArray();
 		s.enQueue(10);
 		s.enQueue(12);
