@@ -2,6 +2,7 @@ package com.core.java8;
 
 import java.math.BigDecimal;
 import java.util.Arrays;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -53,14 +54,20 @@ public class CollectorGroupBy {
 				new Item("watermelon", 10, new BigDecimal("29.99")), new Item("papaya", 20, new BigDecimal("9.99")),
 				new Item("apple", 10, new BigDecimal("9.99")), new Item("banana", 10, new BigDecimal("19.99")),
 				new Item("apple", 20, new BigDecimal("9.99")));
+
 		Map<String, Long> maps = items.stream().collect(Collectors.groupingBy(Item::getName, Collectors.counting()));
 		System.out.println(maps);
+
+		Map<String, Long> finalMap = new LinkedHashMap<>();
+		maps.entrySet().stream().sorted(Map.Entry.comparingByValue()).forEachOrdered(e->finalMap.put(e.getKey(),e.getValue()));
+		System.out.println(finalMap);
+
 		Map<String, Integer> sums = items.stream()
 				.collect(Collectors.groupingBy(Item::getName, Collectors.summingInt(Item::getQty)));
-		System.out.println(sums);
+		//System.out.println(sums);
 
 		Map<BigDecimal, List<Item>> ss = items.stream().collect(Collectors.groupingBy(Item::getPrice));
-		System.out.println(ss);
+		//System.out.println(ss);
 	}
 
 }

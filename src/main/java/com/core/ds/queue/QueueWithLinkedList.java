@@ -7,7 +7,11 @@ public class QueueWithLinkedList<T> {
     Node<T> rear, font = null;
 
     public boolean isEmpty() {
-        return (size == 0);
+        if (font == null && rear == null) {
+            System.out.println("...Queue is empty..");
+            return true;
+        }
+        return false;
     }
 
     public void enQueue(T data) {
@@ -36,14 +40,15 @@ public class QueueWithLinkedList<T> {
     }
 
     public T deQueue() {
-        Node<T> newNode = null;
-        if (font == rear) {
-            font = rear = null;
-            System.out.println("...Queue is empty..");
+        if (isEmpty()) {
+            {
+                System.out.println("Queue is empty in deQueue..");
+            }
         }
         T val = font.value;
         font = font.next;
         return val;
+
     }
 
     public static void main(String[] args) {

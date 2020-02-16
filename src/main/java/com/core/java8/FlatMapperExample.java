@@ -20,8 +20,8 @@ public class FlatMapperExample {
 
         Optional<String> stringOptional = users.stream()
                 .map(user -> user.getPhoneNumbers().stream())
-                .flatMap(stringStream -> stringStream.filter(phoneNo -> phoneNo.equals("10")))
-                .findAny();
+                .flatMap(stringStream -> stringStream.filter(phoneNo -> phoneNo.equals("8")))
+                .findFirst();
 
         stringOptional.ifPresent(System.out::println);
 
