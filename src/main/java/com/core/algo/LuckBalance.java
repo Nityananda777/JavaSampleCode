@@ -19,12 +19,7 @@ public class LuckBalance {
     static int luckBalance(int k, int[][] contests) {
         int numLuck = 0;
         int totalImportant = 0;
-        PriorityQueue<Integer> minHeap = new PriorityQueue<Integer>(new Comparator<Integer>() {
-            @Override
-            public int compare(Integer obj1, Integer obj2) {
-                return obj1 - obj2;
-            }
-        });
+        PriorityQueue<Integer> minHeap = new PriorityQueue<Integer>((obj1, obj2) -> obj1 - obj2);
         for (int[] contest : contests) {
             numLuck += contest[0];
             if (contest[1] == 1) {

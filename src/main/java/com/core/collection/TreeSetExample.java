@@ -32,16 +32,13 @@ public class TreeSetExample {
 
 	}
 
-	public static final Comparator<Fruit> FruitNameComparators = new Comparator<Fruit>() {
-		public int compare(Fruit o1, Fruit o2) {
+	public static final Comparator<Fruit> FruitNameComparators = (o1, o2) -> {
 
-			/*String fname1 = o1.getFruitName().toUpperCase();
-			String fname2 = o2.getFruitName().toUpperCase();
-			return fname1.compareTo(fname2);
-			*/
-			return o2.getDate().compareTo(o1.getDate());
-			// TODO Auto-generated method stub
-		}
-
+		/*String fname1 = o1.getFruitName().toUpperCase();
+		String fname2 = o2.getFruitName().toUpperCase();
+		return fname1.compareTo(fname2);
+		*/
+		return o2.getDate().compareTo(o1.getDate());
+		// TODO Auto-generated method stub
 	};
 }

@@ -57,12 +57,9 @@ class MyConsumer implements Consumer<Integer> {
 public class TestMain {
 
 	public static void main(String[] args) {
-		Consumer c = new Consumer() {
-			@Override
-			public void accept(Object t) {
-				// TODO Auto-generated method stub
-				System.out.println(t);
-			}
+		Consumer c = t -> {
+			// TODO Auto-generated method stub
+			System.out.println(t);
 		};
 		// TODO Auto-generated method stub
 		MyPredicate p = new MyPredicate();
@@ -76,12 +73,9 @@ public class TestMain {
 		list.add("5");
 		list.add("7");
 		list.add("7");
-		Comparator<Integer> cc = new Comparator<Integer>() {
-			@Override
-			public int compare(Integer o1, Integer o2) {
-				// TODO Auto-generated method stub
-				return o2.compareTo(o1);
-			}
+		Comparator<Integer> cc = (o1, o2) -> {
+			// TODO Auto-generated method stub
+			return o2.compareTo(o1);
 		};
 		list.stream().map(m).distinct().forEach(co);
 	}

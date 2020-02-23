@@ -8,25 +8,26 @@ public class BinarySearchTree {
         insert(root, val);
     }
 
-    BinaryNode insert(BinaryNode currNode, int val) {
-        BinaryNode node = new BinaryNode(val);
-        if (currNode == null) {
-            currNode = node;
-        } else if (val < currNode.data) {
-            currNode.left = insert(currNode.left, val);
-        } else if (val > currNode.data) {
-            currNode.right = insert(currNode.right, val);
+    BinaryNode insert(BinaryNode root, int val) {
+        if (root == null) {
+            return new BinaryNode(val);
+        } else {
+            if (val <root.data) {
+                root.left = insert(root.left, val);
+            } else {
+                root.right = insert(root.right, val);
+            }
         }
-        return currNode;
+        return root;
     }
 
-    BinaryNode display(BinaryNode node) {
+    void display(BinaryNode node) {
         if (node != null) {
             display(node.left);
             System.out.print(" " + node.data);
             display(node.right);
         }
-        return node;
+
     }
 
 

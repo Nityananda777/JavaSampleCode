@@ -19,18 +19,14 @@ public abstract class TestComparator {
 		list.add(e2);
 		list.add(e3);
 		list.add(e4);
-		Collections.sort(list, new Comparator<Employee>() {
+		Collections.sort(list, (o1, o2) -> {
 
-			@Override
-			public int compare(Employee o1, Employee o2) {
-
-				if (o1.getEmpId() > o2.getEmpId()) {
-					return 1;
-				} else if (o2.getEmpId() > o1.getEmpId()) {
-					return -1;
-				}
-				return o1.getName().compareTo(o2.getName());
+			if (o1.getEmpId() > o2.getEmpId()) {
+				return 1;
+			} else if (o2.getEmpId() > o1.getEmpId()) {
+				return -1;
 			}
+			return o1.getName().compareTo(o2.getName());
 		});
 		for (Employee e : list) {
 			System.out.println(e.getEmpId());

@@ -29,11 +29,9 @@ public class HashMapLIst {
 		Set<Map.Entry<String, Fruit>> s = m.entrySet();
 		List<Map.Entry<String, Fruit>> list = new ArrayList<Map.Entry<String, Fruit>>(s);
 
-		Collections.sort(list, new Comparator<Map.Entry<String, Fruit>>() {
-			public int compare(Map.Entry<String, Fruit> o1, Map.Entry<String, Fruit> o2) {
-				//return (o2.getValue()).compareTo(o1.getValue());
-				return o2.getValue().getDate().compareTo(o2.getValue().getDate());
-			}
+		Collections.sort(list, (o1, o2) -> {
+			//return (o2.getValue()).compareTo(o1.getValue());
+			return o2.getValue().getDate().compareTo(o2.getValue().getDate());
 		});
 		for (Map.Entry<String, Fruit> entry : list) {
 			System.out.println(entry.getKey() + " ==== " + entry.getValue().toString());

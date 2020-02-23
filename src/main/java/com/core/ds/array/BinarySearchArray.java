@@ -15,8 +15,6 @@ public class BinarySearchArray {
 		if (a[mid] == x) {
 			return a[mid];
 		} else if (left < mid) {
-			
-			
 			return binarySearch(a, left, mid, x);
 		} else {
 			return binarySearch(a, mid, right, x);

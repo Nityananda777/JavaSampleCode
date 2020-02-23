@@ -6,8 +6,7 @@ import java.util.Queue;
 public class BinaryTree {
     BinaryNode root;
 
-    public void insert(int value) {
-        BinaryNode node = new BinaryNode(value);
+    public void insert(BinaryNode node) {
         if (root == null) {
             root = node;
             return;
@@ -17,7 +16,6 @@ public class BinaryTree {
             while (!queue.isEmpty()) {
                 BinaryNode currNode = queue.remove();
                 if (currNode.left == null) {
-
                     currNode.left = node;
                     System.out.println("Successfully inserted new node !");
                     break;
@@ -48,19 +46,23 @@ public class BinaryTree {
         return currNode;
     }
 
-    public BinaryNode getHeightOfTree() {
+    public int getHeightOfTree() {
         Queue<BinaryNode> queue = new LinkedList<>();
         queue.add(root);
         BinaryNode currNode = null;
+        int heightLeft = 0;
+        int heightRight = 0;
         while (!queue.isEmpty()) {
             currNode = queue.remove();
             if (currNode.left != null) {
                 queue.add(currNode.left);
+                heightLeft++;
             } else if (currNode.right != null) {
                 queue.add(currNode.right);
+                heightRight++;
             }
         }
-        return currNode;
+        return heightLeft > heightRight ? heightLeft : heightRight;
     }
 
     public void deleteDeepestNode() {
@@ -78,6 +80,18 @@ public class BinaryTree {
             queue.add(prevNode.left);
             queue.add(prevNode.right);
         }
+    }
+
+    public static int height(BinaryNode root) {
+        // Write your code here.
+        int height = 0;
+        if (root == null) {
+            height = -1;
+        } else {
+            height = 1 + Math.max(height(root.left), height(root.right));
+        }
+        return height;
+
     }
 
     public void search(int value) {
@@ -130,28 +144,68 @@ public class BinaryTree {
     }
 
     public void inOrder(BinaryNode node) {
+        if (node == null)
+            return;
         inOrder(node.left);
         System.out.print(" " + node.data);
         inOrder(node.right);
     }
 
     public void postOrder(BinaryNode node) {
+        if (node == null)
+            return;
         postOrder(node.left);
         postOrder(node.right);
-        System.out.println(" " + node.data);
+        System.out.print(" " + node.data);
     }
 
+
     public void levelOrder(BinaryNode node) {
+        if (node == null) {
+            return;
+        }
+        Queue<BinaryNode> queue = new LinkedList<>();
+        queue.add(node);
+        while (!queue.isEmpty()) {
+            node = queue.remove();
+            System.out.print(node.data + " ");
+            if (node.left != null) {
+                queue.add(node.left);
+            }
+            if (node.right != null) {
+                queue.add(node.right);
+            }
+        }
 
     }
 
     public static void main(String[] args) {
-        BinaryTree tree = new BinaryTree();
+        BinaryNode root = new BinaryNode(1);
+        root.left = new BinaryNode(2);
+        root.right = new BinaryNode(3);
+        root.left.left = new BinaryNode(4);
+        root.left.right = new BinaryNode(5);
+        root.right.left = new BinaryNode(6);
+        root.right.right = new BinaryNode(7);
+        root.left.left.left = new BinaryNode(8);
+        root.right.left.right = new BinaryNode(9);
         System.out.println("Inserting 10 nodes to tree");
-        for (int i = 1; i <= 10; i++)
-            tree.insert(i * 10);
         // System.out.println(tree.getDeepestNode().data);
-        tree.preOrder(tree.root);
+
+        BinaryTree tree = new BinaryTree();
+        tree.insert(root);
+        System.out.println("After InOrder Traversal.");
+        tree.inOrder(root);
         System.out.println();
+        System.out.println("After PreOrder Traversal.");
+        tree.preOrder(root);
+        System.out.println();
+        System.out.println("After PostOrder Traversal.");
+        tree.postOrder(root);
+        System.out.println();
+        System.out.println("After LevelOrder Traversal.");
+        tree.levelOrder(root);
+        System.out.println();
+        System.out.println("height is " + tree.height(root));
     }
 }
