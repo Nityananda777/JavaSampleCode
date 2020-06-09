@@ -1,49 +1,49 @@
 package com.core.ds.array;
-
-public class MergerSort {
-	int x[] = new int[11];
+public class MergeSort {
 
 	public static void main(String[] args) {
-		MergerSort m = new MergerSort();
-		int a[] = { 10, 20, 9, 3, 4, 5, 11, 13, 8, 7, 6 };
-		int l = 0;
-		int h = a.length - 1;
-		m.sort(a, l, h);
+		int[] a = { 5, 1, 6, 2, 3, 4 };
+		mergeSort(a, a.length);
+		for (int i = 0; i < a.length; i++)
+			System.out.print(a[i]+" ,");
 	}
 
-	public void sort(int a[], int l, int h) {
-		if (l == h) {
+	public static void mergeSort(int[] a, int n) {
+		if (n < 2)
 			return;
-		} else if (l < h) {
-			int m = (l + h) / 2;
-			sort(a, l, m);
-			sort(a, m + 1, h);
-			merge(a, l, m + 1, h);
-		}
+		int mid = n / 2;
+		int[] l = new int[mid];
+		int[] r = new int[n - mid];
 
+		for (int i = 0; i < mid; i++) {
+			l[i] = a[i];
+		}
+		for (int i = mid; i < n; i++) {
+			r[i - mid] = a[i];
+		}
+		mergeSort(l, mid);
+		mergeSort(r, n - mid);
+
+		merge(a, l, r, mid, n - mid);
 	}
 
-	public void merge(int a[], int l, int highptr, int h) {
-		int j = 0;
-		int low = l;
-		int mid = highptr - 1;
-		int n = a.length - 1;
-		while (low <= mid && highptr <= h) {
-			if (a[l] < a[h]) {
-				x[j++] = a[l++];
-			} else
-				x[j++] = a[h++];
+	public static void merge(int[] a, int[] l, int[] r, int left, int right) {
+
+		int i = 0, j = 0, k = 0;
+
+		while (i < left && j < right) {
+
+			if (l[i] <= r[j])
+				a[k++] = l[i++];
+			else
+				a[k++] = r[j++];
 
 		}
-		while (l <= mid) {
-			x[j++] = a[l++];
-		}
-		while (highptr <= h) {
-			x[j++] = a[h++];
-		}
-		for (j = 0; j < n; j++) {
-			System.out.println(x[j]);
-		}
+
+		while (i < left)
+			a[k++] = l[i++];
+
+		while (j < right)
+			a[k++] = r[j++];
 	}
-
 }
