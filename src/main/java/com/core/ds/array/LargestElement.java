@@ -7,11 +7,9 @@ public class LargestElement {
 		int a[] = { 10, 9, 3, 5, 2, 1, 7 };
 		int max = 0;
 		for (int i = 0; i < a.length; i++) {
-			if (a[i] > max) {
-				max = a[i];
-				System.out.println("largest element is " + max);
-			}
+			max=Math.max(max,a[i]);
 		}
+		System.out.print(max);
 	}
 
 }

@@ -1,5 +1,7 @@
 package com.core.ds.array;
 
+import java.util.Arrays;
+
 public class QuickSort {
 	int partition(int arr[], int low, int high) {
 		int pivot = arr[high];
@@ -15,7 +17,7 @@ public class QuickSort {
 		int temp = arr[i + 1];
 		arr[i + 1] = arr[high];
 		arr[high] = temp;
-
+System.out.println(Arrays.toString(arr));
 		return i + 1;
 	}
 
