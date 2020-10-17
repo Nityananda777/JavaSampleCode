@@ -2,20 +2,19 @@ package com.core.string;
 
 public class StringReverseWord {
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		String s = "hello world india";
-		
-		String[] sp = s.split("\\s");
-		String rev = "";
-		StringBuffer sb = new StringBuffer();
-		for (int i = 0; i < s.length()-1 ; i++) {
-			String sps = sp[i];
-			
-			for (int j = sps.length() - 1; j >= 0; j--) {
-				rev = rev+sb.append(sps.charAt(j)).toString();
-			}
-		}
-		System.out.println(rev);
-	}
+    public static void main(String[] args) {
+        String s = "hello world india";
+
+        String[] sp = s.split("\\s");
+        String rev = "";
+        StringBuffer sb = new StringBuffer();
+        for (String s1 : sp) {
+            char arr[] = s1.toCharArray();
+            for (int i = arr.length - 1; i > 0; i--) {
+                sb.append(arr[i]);
+            }
+            sb.append(",");
+        }
+        System.out.println(sb.toString());
+    }
 }

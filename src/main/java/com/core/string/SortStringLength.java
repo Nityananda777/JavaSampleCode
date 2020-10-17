@@ -1,10 +1,7 @@
 package com.core.string;
 
-import com.sun.xml.internal.ws.api.model.wsdl.WSDLOutput;
 
 import java.util.Arrays;
-import java.util.Comparator;
-
 public class SortStringLength {
 
     public static void main(String[] args) {

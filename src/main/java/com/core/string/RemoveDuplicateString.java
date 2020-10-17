@@ -1,7 +1,9 @@
 package com.core.string;
 
+import java.util.Arrays;
 import java.util.LinkedHashSet;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 /*
  * Remove Duplicate Character from String
@@ -15,11 +17,8 @@ public class RemoveDuplicateString {
         for (char cc : a) {
             set.add(cc);
         }
-        StringBuilder sb = new StringBuilder();
-        for (Character c : set) {
-            sb.append(c);
-        }
-        System.out.println(sb.toString());
+        String sb = set.stream().map(ss -> String.valueOf(ss.charValue())).collect(Collectors.joining());
+        System.out.println(sb);
     }
 
 }
